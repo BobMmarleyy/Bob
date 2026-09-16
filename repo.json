@@ -1,0 +1,8 @@
+{
+  "name": "Kraptor’s Turkish Repo | @kraptor123",
+  "description": "Türkçe eklentiler",
+  "manifestVersion": 1,
+  "pluginLists": [
+    "https://raw.githubusercontent.com/JustRelaxable/kraptor123-eklentiler/refs/heads/builds/plugins.json"
+  ]
+}
