@@ -10,3 +10,7 @@
 .cxx
 local.properties
 .vscode
+
+# günlük kontrol çalışma dosyaları
+kontrol_rapor.json
+kontrol_cikti.txt

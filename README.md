@@ -1,6 +1,14 @@
-
 ## **Kısa kodlar**
 - **BobMarley**
+
+## 🤖 Otomatik Bakım
+
+Bu depo, yayını sonlanan *Kraptor123/cs-kekikanime* deposunun devamıdır ve **her gün kendiliğinden kontrol edilir**:
+
+- ⏰ Her gün 06:00 UTC (10:00 İstanbul) tüm kanalların adresleri denetlenir.
+- 🔧 Domain'i değişen kanallar otomatik düzeltilir, yeni sürüm derlenip yayınlanır.
+- ♻️ Tamamen ölmüş siteler için aynı markaya ait olası yeni domainler denenir; uygunsa onarılır.
+- 📡 Günlük durum raporu: [Issues](https://github.com/BobMmarleyy/Bob/issues) → **"📡 Günlük Durum Raporu"**.
 
 ## ⚖️ DMCA Disclaimer
 We hereby issue this notice to clarify that these extensions function similarly to a standard web browser by fetching video files from the internet.
@@ -22,5 +30,4 @@ Teşekkür ederiz.
 ## 💾 Kurulum
 
 1. **[cloudstream/pre-release](https://github.com/recloudstream/cloudstream/releases/tag/pre-release)** _Adresinden güncel APK dosyasını indirip kurun._
-2. **Uygulamanın yüklü olduğu cihazda** _[depoyu otomatik yüklemek için tıklayın](https://self-similarity.github.io/http-protocol-redirector?r=cloudstreamrepo://raw.githubusercontent.com/Kraptor123/cs-kekikanime/refs/heads/master/repo.json)_
-
+2. **Uygulamanın yüklü olduğu cihazda** _[depoyu otomatik yüklemek için tıklayın](https://self-similarity.github.io/http-protocol-redirector?r=cloudstreamrepo://raw.githubusercontent.com/BobMmarleyy/Bob/main/repo.json)_

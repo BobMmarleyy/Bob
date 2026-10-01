@@ -1,0 +1,43 @@
+# Bob CloudStream — Günlük kanal kontrolü ve otomatik onarım.
+name: Günlük Kanal Kontrolü
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event_name }}-${{ github.ref }}
+  cancel-in-progress: true
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 6 * * *"   # her gün 06:00 UTC (10:00 İstanbul)
+
+jobs:
+  KanalKontrolu:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      issues: write
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      REPO_OWNER: ${{ github.repository_owner }}
+      REPO_NAME: ${{ github.event.repository.name }}
+
+    steps:
+      - name : Depo Kontrolü
+        uses : actions/checkout@v4
+
+      - name : Python 3.12 Yükle
+        uses : actions/setup-python@v5
+        with :
+          python-version: "3.12"
+
+      - name : Gereksinimleri Yükle
+        run : |
+          python -m pip install --upgrade pip
+          pip install -U requests pycryptodome
+
+      - name : Kontrolü Çalıştır
+        run : |
+          python KONTROL.py > kontrol_cikti.txt 2>&1 || true
+          cat kontrol_cikti.txt >> "$GITHUB_STEP_SUMMARY"
+          grep -q "REPORT_JSON:" kontrol_cikti.txt \
+            || { echo "::error::Kontrol raporu üretilmedi, log yukarıda."; exit 1; }
