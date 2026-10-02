@@ -11,7 +11,7 @@ import com.lagradost.cloudstream3.extractors.SibNet
 import com.lagradost.cloudstream3.extractors.YourUpload
 
 class Animex : MainAPI() {
-    override var mainUrl = "https://animex.tr"
+    override var mainUrl = "https://animex.click"
     override var name = "Animex"
     override val hasMainPage = true
     override var lang = "tr"
@@ -63,7 +63,7 @@ class Animex : MainAPI() {
         val href = if (!rawHref.contains("/animeler/") && !rawHref.contains("/film/")) {
             rawHref
                 .replace(Regex("-\\d+.*"), "") // -sayı- ve sonrasını temizle
-                .replace("https://animex.tr/", "https://animex.tr/animeler/") + "-izle/"
+                .replace("https://animex.click/", "https://animex.click/animeler/") + "-izle/"
         } else {
             rawHref
         }

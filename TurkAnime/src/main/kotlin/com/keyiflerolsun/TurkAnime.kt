@@ -11,7 +11,7 @@ import org.jsoup.nodes.Document
 import org.jsoup.nodes.Element
 
 class TurkAnime : MainAPI() {
-    override var mainUrl              = "https://www.turkanime.co"
+    override var mainUrl              = "https://www.turkanime.tv"
     override var name                 = "TurkAnime"
     override val hasMainPage          = true
     override var lang                 = "tr"
@@ -174,7 +174,7 @@ class TurkAnime : MainAPI() {
 //                "Accept-Language" to "tr-TR,tr;q=0.8,en-US;q=0.5,en;q=0.3",
 //                "User-Agent" to "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:138.0) Gecko/20100101 Firefox/138.0",
 //                "Connection" to "keep-alive",
-//                "Origin" to "https://www.turkanime.co",
+//                "Origin" to "https://www.turkanime.tv",
 //                "Sec-Fetch-Dest" to "empty",
 //                "Sec-Fetch-Mode" to "cors",
 //                "Sec-Fetch-Site" to "cross-site"
@@ -216,7 +216,7 @@ class TurkAnime : MainAPI() {
 
             loadExtractor(subLink, "${mainUrl}/", subtitleCallback, callback)
 
-//            if (subLink.contains("https://www.turkanime.co/player/")) {
+//            if (subLink.contains("https://www.turkanime.tv/player/")) {
 //                val analinkimiz = turkAnimePlayer(subLink).toString()
 //                loadExtractor(analinkimiz, "$mainUrl/", subtitleCallback, callback)
 //            } else {

@@ -10,7 +10,7 @@ import com.lagradost.cloudstream3.LoadResponse.Companion.addActors
 import com.lagradost.cloudstream3.LoadResponse.Companion.addTrailer
 
 class FilmEkseni : MainAPI() {
-    override var mainUrl = "https://filmekseni.net"
+    override var mainUrl = "https://filmekseni.vip"
     override var name = "Film Ekseni"
     override val hasMainPage = true
     override var lang = "tr"

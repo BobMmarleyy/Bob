@@ -10,7 +10,7 @@ import com.lagradost.cloudstream3.LoadResponse.Companion.addActors
 import com.lagradost.cloudstream3.LoadResponse.Companion.addTrailer
 
 class Dizican : MainAPI() {
-    override var mainUrl              = "https://dizican.tv"
+    override var mainUrl              = "https://dizican.cc"
     override var name                 = "Dizican"
     override val hasMainPage          = true
     override var lang                 = "tr"
@@ -60,8 +60,8 @@ private fun Element.toEpisodeMainPageResult(): SearchResponse? {
 }
 
 private fun convertEpisodeUrlToSeriesUrl(episodeUrl: String): String {
-    // https://dizican.tv/bolum/justifiable-defense-7-bolum/ -> https://dizican.tv/dizi/justifiable-defense/
-    // https://dizican.tv/bolum/flourished-peony-2-sezon-14-bolum/ -> https://dizican.tv/dizi/flourished-peony/
+    // https://dizican.cc/bolum/justifiable-defense-7-bolum/ -> https://dizican.cc/dizi/justifiable-defense/
+    // https://dizican.cc/bolum/flourished-peony-2-sezon-14-bolum/ -> https://dizican.cc/dizi/flourished-peony/
     
     val regex = """/bolum/(.+?)-(?:\d+-sezon-)?(?:\d+)-bolum/?""".toRegex()
     val match = regex.find(episodeUrl)

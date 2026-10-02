@@ -12,7 +12,7 @@ import com.lagradost.cloudstream3.extractors.*
 import com.lagradost.cloudstream3.newEpisode
 
 class CizgiveDizi : MainAPI() {
-    override var mainUrl = "https://cizgivedizi.com"
+    override var mainUrl = "https://cizgivedizi.net"
     override var name = "CizgiveDizi"
     override val hasMainPage = true
     override var lang = "tr"

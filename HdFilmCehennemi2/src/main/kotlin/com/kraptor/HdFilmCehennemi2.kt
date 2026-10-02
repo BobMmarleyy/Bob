@@ -10,7 +10,7 @@ import com.lagradost.cloudstream3.LoadResponse.Companion.addActors
 import com.lagradost.cloudstream3.LoadResponse.Companion.addTrailer
 
 class HdFilmCehennemi2 : MainAPI() {
-    override var mainUrl              = "https://hdfilmcehennemi2.rip"
+    override var mainUrl              = "https://hdfilmcehennemi.vip"
     override var name                 = "HdFilmCehennemi2"
     override val hasMainPage          = true
     override var lang                 = "tr"

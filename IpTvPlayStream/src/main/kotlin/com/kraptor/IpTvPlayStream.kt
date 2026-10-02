@@ -14,7 +14,7 @@ import kotlinx.serialization.Serializable
 import org.jsoup.Jsoup
 
 class IpTvPlayStream : MainAPI() {
-    override var mainUrl              = "https://iptvplay.stream"
+    override var mainUrl              = "https://www.iptvplay.stream"
     override var name                 = "IpTvPlay"
     override val hasMainPage          = true
     override var lang                 = "tr"

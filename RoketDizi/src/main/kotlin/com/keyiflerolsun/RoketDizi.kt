@@ -15,7 +15,7 @@ import org.jsoup.nodes.Element
 import kotlin.collections.mapNotNull
 
 class RoketDizi : MainAPI() {
-    override var mainUrl = "https://www.roketdizi.live"
+    override var mainUrl = "https://roketdizi.com"
     override var name = "RoketDizi"
     override val hasMainPage = true
     override var lang = "tr"
