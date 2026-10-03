@@ -10,7 +10,7 @@ import com.lagradost.cloudstream3.LoadResponse.Companion.addActors
 import com.lagradost.cloudstream3.LoadResponse.Companion.addTrailer
 
 class FilmIzyon : MainAPI() {
-    override var mainUrl              = "https://www.filmizyon.com"
+    override var mainUrl              = "https://www.filmizyon.net"
     override var name                 = "FilmIzyon"
     override val hasMainPage          = true
     override var lang                 = "tr"
