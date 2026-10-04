@@ -3,6 +3,6 @@
   "description": "Türkçe eklentiler — her gün otomatik kontrol ve onarım",
   "manifestVersion": 1,
   "pluginLists": [
-    "https://raw.githubusercontent.com/BobMmarleyy/Bob/builds/plugins.json"
+    "https://raw.githubusercontent.com/BobMmarleyy/Bob/refs/heads/builds/plugins.json"
   ]
 }
