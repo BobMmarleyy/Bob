@@ -15,7 +15,7 @@ import org.json.JSONArray
 import org.json.JSONObject
 
 class Sinefy : MainAPI() {
-    override var mainUrl              = "https://sinefy3.com"
+    override var mainUrl              = "https://sinefy.org"
     override var name                 = "Sinefy"
     override val hasMainPage          = true
     override var lang                 = "tr"
