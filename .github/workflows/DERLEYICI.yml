@@ -16,6 +16,7 @@ on:
       - "**/*.png"
       - "KONTROL.py"
       - "auto_update.py"
+      - "kontrol_rapor.json"
 
 jobs:
   CloudStreamDerleyici:
@@ -27,54 +28,53 @@ jobs:
       REPO_NAME: ${{ github.event.repository.name }}
 
     steps:
-      - name : "Kaynak Depo Kontrolü"
-        uses : actions/checkout@v4
-        with :
-          path : src
+      - name: "Kaynak Depo Kontrolü"
+        uses: actions/checkout@v4
+        with:
+          path: src
 
-      - name : "'builds' Dizinini Hazırla"
-        run : |
+      - name: "'builds' Dizinini Hazırla"
+        run: |
           cd "$GITHUB_WORKSPACE"
-          if [ -n "$(git ls-remote --heads "https://github.com/$REPO_OWNER/$REPO_NAME.git" builds)" ]; then
-            git clone --depth 1 --branch builds \
-              "https://github.com/$REPO_OWNER/$REPO_NAME.git" builds
+          if git ls-remote --exit-code --heads "https://github.com/$REPO_OWNER/$REPO_NAME.git" builds >/dev/null 2>&1; then
+            git clone --depth 1 --branch builds "https://github.com/$REPO_OWNER/$REPO_NAME.git" builds
           else
-            mkdir -p builds && cd builds && git init -b builds
+            mkdir -p builds
+            cd builds
+            git init -b builds
             git remote add origin "https://github.com/$REPO_OWNER/$REPO_NAME.git"
           fi
 
-      - name : Eski Derlemeleri Temizle
-        run : rm -f "$GITHUB_WORKSPACE"/builds/*.cs3 || true
+      - name: Eski Derlemeleri Temizle
+        run: rm -f "$GITHUB_WORKSPACE"/builds/*.cs3 "$GITHUB_WORKSPACE"/builds/*.jar || true
 
-      - name : JDK 23 Ayarla
-        uses : actions/setup-java@v4
-        with :
-          distribution: temurin
-          java-version: "23"
+      - name: JDK 17 Ayarla
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
 
-      - name : Android SDK Ayarla
-        uses : android-actions/setup-android@v3
+      - name: Android SDK Ayarla
+        uses: android-actions/setup-android@v2
 
-      - name : Eklentileri Derle
-        run : |
+      - name: Eklentileri Derle
+        run: |
           cd "$GITHUB_WORKSPACE/src"
           chmod +x gradlew
           ./gradlew make makePluginsJson --stacktrace
-          find "$GITHUB_WORKSPACE/src" -path "*/build/*.cs3" \
-            -exec cp {} "$GITHUB_WORKSPACE/builds/" \;
-          cp "$GITHUB_WORKSPACE/src/build/plugins.json" "$GITHUB_WORKSPACE/builds/"
+          find . -path "*/build/*.cs3" -exec cp {} "$GITHUB_WORKSPACE/builds/" \;
+          find . -path "*/build/*.jar" -exec cp {} "$GITHUB_WORKSPACE/builds/" \;
+          cp build/plugins.json "$GITHUB_WORKSPACE/builds/"
 
-      - name : Derlemeleri Yükle
-        run : |
+      - name: Derlemeleri Yükle
+        run: |
           cd "$GITHUB_WORKSPACE/builds"
           git config user.email "actions@github.com"
           git config user.name "GitHub Actions"
           git add .
           if [ -n "$(git status --porcelain)" ]; then
-            if git rev-parse HEAD >/dev/null 2>&1; then
-              git commit --amend -m "$GITHUB_SHA 'nın Derlenmesi" --no-verify
-            else
-              git commit -m "$GITHUB_SHA 'nın Derlenmesi"
-            fi
+            git commit -m "Build $GITHUB_SHA"
+          else
+            echo "No changes to commit"
           fi
           git push --force origin builds
