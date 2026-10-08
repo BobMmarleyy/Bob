@@ -16,5 +16,4 @@ cloudstream {
     status  = 1 // will be 3 if unspecified
     tvTypes = listOf("Anime")
     iconUrl = "https://animeler.me/wp-content/uploads/cropped-animelerpw-48x48.png"
-    isCrossPlatform = true
 }
