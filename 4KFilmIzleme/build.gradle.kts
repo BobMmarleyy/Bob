@@ -16,5 +16,4 @@ cloudstream {
     status  = 1 // will be 3 if unspecified
     tvTypes = listOf("Movie")
     iconUrl = "https://www.4kfilmizleme.net/wp-content/uploads/2022/09/4kfilmizlemefavicon-1.png"
-    isCrossPlatform = true
 }
