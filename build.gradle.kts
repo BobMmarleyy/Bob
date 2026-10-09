@@ -5,36 +5,15 @@ buildscript {
     repositories {
         google()
         mavenCentral()
-        // JitPack'in recloudstream artifact'ları için maven-metadata bozuk
-        // (gradle--32895aedb6-1.pom 404 veriyor). Bu ivy repo, maven-metadata'i
-        // tamamen atlayıp gradle--SNAPSHOT.jar dosyasını doğrudan çekiyor.
-        // NOT: gerçek plugin sınıfları SUBPROJECT koordinatında
-        // com.github.recloudstream.gradle:gradle (kök jar sadece manifest).
-        // ivy transitive POM vermediği için stdlib/asm/jadb açıkça declare ediliyor.
-        ivy {
-            url = uri("https://jitpack.io")
-            patternLayout {
-                artifact("[organisation]/[module]/[revision]/[artifact]-[revision].[ext]")
-                setM2compatible(true)
-            }
-            metadataSources {
-                artifact()
-            }
-            content {
-                includeGroupByRegex("com\\.github\\.recloudstream\\.gradle")
-            }
-        }
+        // Shitpack repo which contains our tools and dependencies
         maven("https://jitpack.io")
     }
 
     dependencies {
         classpath("com.android.tools.build:gradle:8.7.3")
-        // Cloudstream gradle plugin (subproject koordinatı — gerçek sınıflar burada)
-        classpath("com.github.recloudstream.gradle:gradle:-SNAPSHOT")
-        classpath("org.ow2.asm:asm:9.9.1")
-        classpath("org.ow2.asm:asm-tree:9.9.1")
-        classpath("com.github.vidstige:jadb:v1.2.1")
-        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:2.4.0")
+        // Cloudstream gradle plugin which makes everything work and builds plugins
+        classpath("com.github.recloudstream:gradle:-SNAPSHOT")
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:2.1.0")
     }
 }
 
@@ -72,13 +51,13 @@ subprojects {
         }
 
         compileOptions {
-            sourceCompatibility = JavaVersion.VERSION_17
-            targetCompatibility = JavaVersion.VERSION_17
+            sourceCompatibility = JavaVersion.VERSION_1_8
+            targetCompatibility = JavaVersion.VERSION_1_8
         }
 
         tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinJvmCompile> {
             compilerOptions {
-                jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17)
+                jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_1_8)
                 freeCompilerArgs.addAll(
                     listOf(
                         "-Xno-call-assertions",
@@ -108,8 +87,6 @@ subprojects {
         implementation("com.fasterxml.jackson.core:jackson-databind:2.16.0")          // JSON-nesne dönüştürme kütüphanesi
         implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.10.1")      // Kotlin için asenkron işlemler
         implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.8.0")
-        // cloudstream3 stub'ı @Nullable (jspecify) kullanıyor — eklenti classpath'inde olmalı
-        implementation("org.jspecify:jspecify:1.0.0")
     }
 }
 
