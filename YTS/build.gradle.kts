@@ -25,4 +25,5 @@ cloudstream {
 
     iconUrl = "https://raw.githubusercontent.com/phisher98/TVVVV/main/yts.png"
 
+    isCrossPlatform = true
 }
