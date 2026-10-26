@@ -11,7 +11,7 @@ import com.lagradost.cloudstream3.LoadResponse.Companion.addActors
 import com.lagradost.cloudstream3.LoadResponse.Companion.addTrailer
 
 class AsyaKing : MainAPI() {
-    override var mainUrl              = "https://www.asyaking.net"
+    override var mainUrl              = "https://asyaking.org"
     override var name                 = "AsyaKing"
     override val hasMainPage          = true
     override var lang                 = "tr"
