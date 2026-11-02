@@ -11,7 +11,7 @@ import com.lagradost.cloudstream3.LoadResponse.Companion.addTrailer
 import com.lagradost.cloudstream3.utils.AppContextUtils.html
 
 class FullHDIzle : MainAPI() {
-    override var mainUrl              = "https://fullhdizle.one"
+    override var mainUrl              = "https://fullhdizle.online"
     override var name                 = "FullHDIzle"
     override val hasMainPage          = true
     override var lang                 = "tr"
